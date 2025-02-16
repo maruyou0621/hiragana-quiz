@@ -39,21 +39,21 @@ export default function HiraganaQuiz() {
   };
 
   return (
-    <div className="p-6 text-center">
-      <h1 className="text-2xl mb-4">ひらがなクイズ</h1>
-      <p className="text-5xl font-bold mb-4">{question.correct.kana}</p>
-      <div className="grid grid-cols-2 gap-4">
+    <div className="quiz-container">
+      <h1 className="quiz-title">ひらがなクイズ</h1>
+      <p className="quiz-question">{question.correct.kana}</p>
+      <div className="quiz-options">
         {question.options.map((option) => (
           <button
             key={option}
-            className="p-4 border rounded bg-blue-500 text-white hover:bg-blue-700"
+            className="quiz-button"
             onClick={() => handleAnswer(option)}
           >
             {option}
           </button>
         ))}
       </div>
-      <p className="mt-4 text-xl">{feedback}</p>
+      <p className="quiz-feedback">{feedback}</p>
     </div>
   );
 }
