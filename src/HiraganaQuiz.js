@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 
-const hiraganaList = [
+const kanaList = [
+  // ひらがな
   { kana: "あ", romaji: "a" }, { kana: "い", romaji: "i" }, { kana: "う", romaji: "u" }, { kana: "え", romaji: "e" }, { kana: "お", romaji: "o" },
   { kana: "か", romaji: "ka" }, { kana: "き", romaji: "ki" }, { kana: "く", romaji: "ku" }, { kana: "け", romaji: "ke" }, { kana: "こ", romaji: "ko" },
   { kana: "さ", romaji: "sa" }, { kana: "し", romaji: "shi" }, { kana: "す", romaji: "su" }, { kana: "せ", romaji: "se" }, { kana: "そ", romaji: "so" },
-  { kana: "た", romaji: "ta" }, { kana: "ち", romaji: "chi" }, { kana: "つ", romaji: "tsu" }, { kana: "て", romaji: "te" }, { kana: "と", romaji: "to" },
-  { kana: "な", romaji: "na" }, { kana: "に", romaji: "ni" }, { kana: "ぬ", romaji: "nu" }, { kana: "ね", romaji: "ne" }, { kana: "の", romaji: "no" },
-  { kana: "は", romaji: "ha" }, { kana: "ひ", romaji: "hi" }, { kana: "ふ", romaji: "fu" }, { kana: "へ", romaji: "he" }, { kana: "ほ", romaji: "ho" },
-  { kana: "ま", romaji: "ma" }, { kana: "み", romaji: "mi" }, { kana: "む", romaji: "mu" }, { kana: "め", romaji: "me" }, { kana: "も", romaji: "mo" },
-  { kana: "や", romaji: "ya" }, { kana: "ゆ", romaji: "yu" }, { kana: "よ", romaji: "yo" },
-  { kana: "ら", romaji: "ra" }, { kana: "り", romaji: "ri" }, { kana: "る", romaji: "ru" }, { kana: "れ", romaji: "re" }, { kana: "ろ", romaji: "ro" },
-  { kana: "わ", romaji: "wa" }, { kana: "を", romaji: "wo" }, { kana: "ん", romaji: "n" }
+  // カタカナ
+  { kana: "ア", romaji: "a" }, { kana: "イ", romaji: "i" }, { kana: "ウ", romaji: "u" }, { kana: "エ", romaji: "e" }, { kana: "オ", romaji: "o" },
+  { kana: "カ", romaji: "ka" }, { kana: "キ", romaji: "ki" }, { kana: "ク", romaji: "ku" }, { kana: "ケ", romaji: "ke" }, { kana: "コ", romaji: "ko" },
+  { kana: "サ", romaji: "sa" }, { kana: "シ", romaji: "shi" }, { kana: "ス", romaji: "su" }, { kana: "セ", romaji: "se" }, { kana: "ソ", romaji: "so" }
 ];
 
 const getRandomQuestion = () => {
-  const correct = hiraganaList[Math.floor(Math.random() * hiraganaList.length)];
+  const correct = kanaList[Math.floor(Math.random() * kanaList.length)];
   let options = new Set([correct.romaji]);
   while (options.size < 4) {
-    options.add(hiraganaList[Math.floor(Math.random() * hiraganaList.length)].romaji);
+    options.add(kanaList[Math.floor(Math.random() * kanaList.length)].romaji);
   }
   return { correct, options: Array.from(options).sort(() => Math.random() - 0.5) };
 };
@@ -40,15 +38,11 @@ export default function HiraganaQuiz() {
 
   return (
     <div className="quiz-container">
-      <h1 className="quiz-title">ひらがなクイズ</h1>
+      <h1 className="quiz-title">ひらがな・カタカナクイズ</h1>
       <p className="quiz-question">{question.correct.kana}</p>
       <div className="quiz-options">
         {question.options.map((option) => (
-          <button
-            key={option}
-            className="quiz-button"
-            onClick={() => handleAnswer(option)}
-          >
+          <button key={option} className="quiz-button" onClick={() => handleAnswer(option)}>
             {option}
           </button>
         ))}
