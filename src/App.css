@@ -1,131 +1,101 @@
-/* ======= 全体のスタイル ======= */
-body {
-  background-color: #f4f4f4;
+/* 全体のレイアウト */
+.app-container {
+  text-align: center;
+  padding: 20px;
   font-family: 'Arial', sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-/* ======= クイズコンテナ ======= */
-.quiz-container {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 450px;
-  margin: 80px auto;
-  text-align: center;
-  transition: 0.3s ease-in-out;
-}
-
-.quiz-container:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* ======= タイトル ======= */
-.quiz-title {
-  color: #2c3e50;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-/* ======= ひらがな問題 ======= */
-.quiz-question {
-  font-size: 6rem;
-  color: #e74c3c;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
-
-/* ======= 選択肢のボタンエリア ======= */
-.quiz-options {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-/* ======= 選択肢ボタン ======= */
-.quiz-button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: bold;
-  width: 180px;
-}
-
-.quiz-button:hover {
-  background-color: #2980b9;
-  transform: scale(1.05);
-}
-
-.quiz-button:active {
-  background-color: #1f6aa5;
-}
-
-/* ======= 正解・不正解メッセージ ======= */
-.quiz-feedback {
-  font-size: 1.8rem;
-  margin-top: 20px;
-  font-weight: bold;
-  transition: 0.3s ease-in-out;
-}
-
-/* ✅ 正解メッセージ */
-.quiz-feedback:contains('✅') {
-  color: #27ae60;
-}
-
-/* ❌ 不正解メッセージ */
-.quiz-feedback:contains('❌') {
-  color: #e74c3c;
-}
-
-/* ======= レスポンシブ対応（スマホ用） ======= */
-@media (max-width: 600px) {
-  .quiz-container {
-    max-width: 90%;
-    padding: 20px;
-  }
-
-  .quiz-question {
-    font-size: 4rem;
-  }
-
-  .quiz-button {
-    font-size: 1.2rem;
-    padding: 12px 20px;
-    width: 140px;
-  }
-}
-
-/* 広告エリアのスタイル */
+/* 広告エリア */
 .ad-container {
-  text-align: center;
-  margin-bottom: 5px; /* 間隔をさらに狭く */
-  padding-bottom: 0px; /* 余白をなくす */
+  margin-bottom: 10px; /* クイズとの間隔を調整 */
 }
 
 .ad-text {
-  font-size: 16px;
-  font-weight: bold;
-  color: #007bff;
-  text-decoration: none;
   display: inline-block;
-  padding: 6px 12px; /* 広告内の余白も少し狭く */
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #007bff;
   border: 2px solid #007bff;
-  border-radius: 5px;
+  border-radius: 8px;
+  text-decoration: none;
   transition: 0.3s;
 }
 
 .ad-text:hover {
   background-color: #007bff;
   color: white;
+}
+
+/* クイズ切り替えボタン */
+.mode-buttons {
+  margin: 15px 0;
+}
+
+.mode-buttons button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+}
+
+.mode-buttons button:hover {
+  background-color: #0056b3;
+}
+
+/* クイズ全体のコンテナ */
+.quiz-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* クイズのタイトル */
+.quiz-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* 問題の表示 */
+.quiz-question {
+  font-size: 28px;
+  font-weight: bold;
+  color: #c0392b;
+  margin-bottom: 15px;
+}
+
+/* 選択肢のボタン */
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.quiz-button {
+  padding: 15px;
+  font-size: 18px;
+  color: white;
+  background-color: #3498db;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.quiz-button:hover {
+  background-color: #2980b9;
+}
+
+/* 回答のフィードバック */
+.quiz-feedback {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
 }
