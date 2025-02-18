@@ -34,6 +34,7 @@ body {
 .quiz-question {
   font-size: 4rem; /* フォントを大きく */
   font-weight: bold; /* 太字にする */
+  color: red; /* 赤文字にする */
   margin-bottom: 20px;
   text-align: center;
 }
@@ -100,5 +101,6 @@ body {
   }
   .quiz-question {
     font-size: 2rem;
+    color: red;
   }
 }
