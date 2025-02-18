@@ -1,124 +1,103 @@
-/* ===============================
-   基本設定
-================================ */
-html, body {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden; /* 横スクロールを防ぐ */
+/* App.css - 完全版 */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  text-align: center;
 }
 
-.container {
+.app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  min-height: 100vh;
   padding: 20px;
 }
 
-/* ===============================
-   広告エリア
-================================ */
-.ad-container {
-  margin-bottom: 15px;
-  padding: 10px;
-}
-
-.ad-text {
-  font-size: 16px;
-  color: #3b82f6;
-  text-decoration: none;
-  padding: 10px 20px;
-  border: 2px solid #3b82f6;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-.ad-text:hover {
-  background-color: #3b82f6;
-  color: #ffffff;
-}
-
-/* ===============================
-   クイズ切り替えボタン
-================================ */
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.button-container button {
-  font-size: 18px;
-  padding: 12px 20px;
-  width: 90%;
-  max-width: 280px;
-  border: 2px solid #333;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #ffffff;
-  transition: all 0.3s ease;
-}
-
-.button-container button:hover {
-  background-color: #333;
-  color: #ffffff;
-}
-
-/* ===============================
-   クイズ全体のデザイン
-================================ */
 .quiz-container {
-  background-color: #ffffff;
+  background: white;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  max-width: 500px;
-  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  text-align: center;
 }
 
 .quiz-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .quiz-question {
-  font-size: 32px;
-  color: #c0392b;
-  font-weight: bold;
-  margin-bottom: 15px;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .quiz-options {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
+  width: 100%;
 }
 
 .quiz-button {
-  padding: 12px 16px;
-  font-size: 18px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  width: 45%;  /* ボタンを少し小さくする */
+  padding: 12px;
+  font-size: 1.2rem;
+  text-align: center;
   background-color: #4a90e2;
   color: white;
-  transition: all 0.3s;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .quiz-button:hover {
-  background-color: #357ae8;
+  background-color: #357ab8;
 }
 
 .quiz-feedback {
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  border: 2px solid #4a90e2;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #4a90e2;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .quiz-button {
+    width: 48%; /* モバイル対応 */
+  }
+  .quiz-title {
+    font-size: 1.8rem;
+  }
+  .quiz-question {
+    font-size: 1.5rem;
+  }
 }
