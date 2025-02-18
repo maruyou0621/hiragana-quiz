@@ -1,35 +1,34 @@
-import React, { useState, useEffect } from "react";
-import n3Words from "../data/n3_words"; // ✅ 修正: n3_words.jsの適切なインポート
+import React, { useState } from "react";
+import n3Words from "../data/n3_words";  // ✅ 実際のファイル名に合わせる！
 
-// 配列をランダムに並び替える関数
-const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
-
-// クイズの問題を取得する関数
 const getRandomQuestion = () => {
-  if (n3Words.length === 0) return { correct: { japanese: "データがありません", chinese: "" }, options: [] };
+  const word = n3Words[Math.floor(Math.random() * n3Words.length)];
+  
+  // 問題を漢字・ひらがな・カタカナのどれかで出題
+  const questionType = Math.floor(Math.random() * 3);
+  let questionText = word.kanji; // デフォルトは漢字
+  if (questionType === 1) questionText = word.hiragana;
+  if (questionType === 2) questionText = word.katakana;
 
-  const correct = n3Words[Math.floor(Math.random() * n3Words.length)];
-  let options = new Set([correct.chinese]);
+  // 正解の中国語を取得
+  const correctAnswer = word.chinese;
 
+  // ランダムに3つの別の単語の中国語を選択肢に加える
+  let options = new Set([correctAnswer]);
   while (options.size < 4) {
-    options.add(n3Words[Math.floor(Math.random() * n3Words.length)].chinese);
+    const randomWord = n3Words[Math.floor(Math.random() * n3Words.length)];
+    options.add(randomWord.chinese);
   }
 
-  return { correct, options: shuffleArray(Array.from(options)) };
+  return { questionText, correctAnswer, options: Array.from(options).sort(() => Math.random() - 0.5) };
 };
 
 export default function N3Quiz() {
-  const [question, setQuestion] = useState(null);
+  const [question, setQuestion] = useState(getRandomQuestion());
   const [feedback, setFeedback] = useState("");
 
-  useEffect(() => {
-    setQuestion(getRandomQuestion());
-  }, []);
-
   const handleAnswer = (answer) => {
-    if (!question) return;
-
-    if (answer === question.correct.chinese) {
+    if (answer === question.correctAnswer) {
       setFeedback("✅ 正解！");
       setTimeout(() => {
         setFeedback("");
@@ -40,14 +39,10 @@ export default function N3Quiz() {
     }
   };
 
-  if (!question) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <div className="quiz-container">
       <h1 className="quiz-title">N3 単語クイズ</h1>
-      <p className="quiz-question">{question.correct.japanese}</p>
+      <p className="quiz-question">{question.questionText}</p>
       <div className="quiz-options">
         {question.options.map((option) => (
           <button key={option} className="quiz-button" onClick={() => handleAnswer(option)}>

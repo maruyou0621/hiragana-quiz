@@ -1,15 +1,43 @@
 const n3Words = [
-    { japanese: "約束", chinese: "承诺" },
-    { japanese: "最近", chinese: "最近" },
-    { japanese: "準備", chinese: "准备" },
-    { japanese: "普通", chinese: "普通" },
-    { japanese: "必要", chinese: "必要" },
-    { japanese: "発表", chinese: "发表" },
-    { japanese: "習慣", chinese: "习惯" },
-    { japanese: "失敗", chinese: "失败" },
-    { japanese: "成功", chinese: "成功" },
-    { japanese: "運転", chinese: "驾驶" }
-  ];
-  
-  export default n3Words;
-  
+  { kanji: "学校", hiragana: "がっこう", katakana: "ガッコウ", chinese: "学校" },
+  { kanji: "先生", hiragana: "せんせい", katakana: "センセイ", chinese: "老师" },
+  { kanji: "コンピュータ", hiragana: "こんぴゅーた", katakana: "コンピュータ", chinese: "计算机" },
+  { kanji: "病院", hiragana: "びょういん", katakana: "ビョウイン", chinese: "医院" },
+  { kanji: "電車", hiragana: "でんしゃ", katakana: "デンシャ", chinese: "电车" },
+  { kanji: "テレビ", hiragana: "てれび", katakana: "テレビ", chinese: "电视" },
+  { kanji: "友達", hiragana: "ともだち", katakana: "トモダチ", chinese: "朋友" },
+  { kanji: "携帯電話", hiragana: "けいたいでんわ", katakana: "ケイタイデンワ", chinese: "手机" },
+  { kanji: "ホテル", hiragana: "ほてる", katakana: "ホテル", chinese: "宾馆" },
+  { kanji: "飛行機", hiragana: "ひこうき", katakana: "ヒコウキ", chinese: "飞机" },
+  { kanji: "レストラン", hiragana: "れすとらん", katakana: "レストラン", chinese: "餐厅" },
+  { kanji: "公園", hiragana: "こうえん", katakana: "コウエン", chinese: "公园" },
+  { kanji: "銀行", hiragana: "ぎんこう", katakana: "ギンコウ", chinese: "银行" },
+  { kanji: "冷蔵庫", hiragana: "れいぞうこ", katakana: "レイゾウコ", chinese: "冰箱" },
+  { kanji: "スーパー", hiragana: "すーぱー", katakana: "スーパー", chinese: "超市" },
+  { kanji: "勉強", hiragana: "べんきょう", katakana: "ベンキョウ", chinese: "学习" },
+  { kanji: "時計", hiragana: "とけい", katakana: "トケイ", chinese: "钟表" },
+  { kanji: "バス", hiragana: "ばす", katakana: "バス", chinese: "公共汽车" },
+  { kanji: "大学", hiragana: "だいがく", katakana: "ダイガク", chinese: "大学" },
+  { kanji: "映画", hiragana: "えいが", katakana: "エイガ", chinese: "电影" },
+  { kanji: "シャツ", hiragana: "しゃつ", katakana: "シャツ", chinese: "衬衫" },
+  { kanji: "地下鉄", hiragana: "ちかてつ", katakana: "チカテツ", chinese: "地铁" },
+  { kanji: "辞書", hiragana: "じしょ", katakana: "ジショ", chinese: "词典" },
+  { kanji: "コーヒー", hiragana: "こーひー", katakana: "コーヒー", chinese: "咖啡" },
+  { kanji: "写真", hiragana: "しゃしん", katakana: "シャシン", chinese: "照片" },
+  { kanji: "机", hiragana: "つくえ", katakana: "ツクエ", chinese: "桌子" },
+  { kanji: "カメラ", hiragana: "かめら", katakana: "カメラ", chinese: "相机" },
+  { kanji: "病気", hiragana: "びょうき", katakana: "ビョウキ", chinese: "生病" },
+  { kanji: "アパート", hiragana: "あぱーと", katakana: "アパート", chinese: "公寓" },
+  { kanji: "動物", hiragana: "どうぶつ", katakana: "ドウブツ", chinese: "动物" },
+  { kanji: "雨", hiragana: "あめ", katakana: "アメ", chinese: "雨" },
+  { kanji: "荷物", hiragana: "にもつ", katakana: "ニモツ", chinese: "行李" },
+  { kanji: "クラス", hiragana: "くらす", katakana: "クラス", chinese: "班级" },
+  { kanji: "野菜", hiragana: "やさい", katakana: "ヤサイ", chinese: "蔬菜" },
+  { kanji: "魚", hiragana: "さかな", katakana: "サカナ", chinese: "鱼" },
+  { kanji: "パン", hiragana: "ぱん", katakana: "パン", chinese: "面包" },
+  { kanji: "新聞", hiragana: "しんぶん", katakana: "シンブン", chinese: "报纸" },
+  { kanji: "テレビゲーム", hiragana: "てれびげーむ", katakana: "テレビゲーム", chinese: "电子游戏" },
+  { kanji: "空港", hiragana: "くうこう", katakana: "クウコウ", chinese: "机场" }
+];
+
+export default n3Words;
