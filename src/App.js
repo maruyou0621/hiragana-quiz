@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HiraganaQuiz from "./components/HiraganaQuiz";
 import N3Quiz from "./components/N3Quiz";
-import "./App.css";  // ✅ src/App.css にある場合
+import "./styles/App.css";  // ✅ 正しいパスに変更
 
 function App() {
   const [quizType, setQuizType] = useState("hiragana");
