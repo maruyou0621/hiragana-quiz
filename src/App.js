@@ -29,10 +29,14 @@ function App() {
 
       {/* ナビゲーションボタン */}
       <div className="quiz-switcher">
-        <button className={`quiz-button ${quizType === "hiragana" ? "active" : ""}`} onClick={() => setQuizType("hiragana")}>
+        <button className={`quiz-button ${quizType === "hiragana" ? "active" : ""}`} 
+          onClick={() => setQuizType("hiragana")}
+          style={{ backgroundColor: "#44a680", width: "160px" }}>
           ひらがなクイズ
         </button>
-        <button className={`quiz-button ${quizType === "n3" ? "active" : ""}`} onClick={() => setQuizType("n3")}>
+        <button className={`quiz-button ${quizType === "n3" ? "active" : ""}`} 
+          onClick={() => setQuizType("n3")}
+          style={{ backgroundColor: "#44a680", width: "160px" }}>
           N3単語クイズ
         </button>
       </div>
