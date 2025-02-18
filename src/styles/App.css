@@ -76,10 +76,10 @@ body {
 }
 
 .nav-button {
-  padding: 10px 20px;
+  padding: 10px 30px;
   font-size: 1rem;
   background-color: #ffffff;
-  border: 2px solid #4a90e2;
+  border: 2px solid #4ae27a;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
