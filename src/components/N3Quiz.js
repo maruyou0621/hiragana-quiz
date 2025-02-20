@@ -3,6 +3,12 @@ import n3Words from "../data/n3_words";
 import n3Grammar from "../data/n3_grammar"; // 文法問題のデータ
 import AdBannerIncorrect from "./AdBannerIncorrect"; // 不正解時の広告
 
+// 音声を再生する関数
+const playSound = (type) => {
+  const sound = new Audio(`/sounds/${type}.mp3`);
+  sound.play();
+};
+
 // 単語問題をランダムに取得
 const getRandomWordQuestion = () => {
   const word = n3Words[Math.floor(Math.random() * n3Words.length)];
@@ -50,6 +56,7 @@ export default function N3Quiz() {
   const handleAnswer = (answer) => {
     if (answer === question.correctAnswer) {
       setFeedback("✅ 正解！");
+      playSound("correct"); // 正解音を再生
       setShowAd(false);
       setTimeout(() => {
         setFeedback("");
@@ -57,6 +64,7 @@ export default function N3Quiz() {
       }, 1000);
     } else {
       setFeedback("❌ 不正解…");
+      playSound("incorrect"); // 不正解音を再生
       setShowAd(true);
       window.open("https://px.a8.net/svt/ejp?a8mat=44Z2FF+E22GZ6+348+6C1VL", "広告サイト", "width=600,height=400");
     }
