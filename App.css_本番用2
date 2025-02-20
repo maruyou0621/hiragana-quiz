@@ -85,12 +85,6 @@ body {
   text-align: center;
 }
 
-/* ひらがなクイズのボタンを縦に広げる */
-.hiragana-quiz .quiz-button {
-  padding: 16px;
-  height: 60px; /* ひらがなクイズのボタンのみ縦に広げる */
-}
-
 .quiz-button:hover {
   background-color: #357ab8;
 }
@@ -111,7 +105,7 @@ body {
   
   .quiz-options button {
     font-size: 14px;
-    padding: 10px;
+    padding: 8px;
     width: 100%;
   }
   
@@ -124,9 +118,4 @@ body {
     flex-wrap: nowrap; /* ボタンを横並びに固定 */
     justify-content: center;
   }
-  
-  /* スマホ時はひらがなクイズのボタンをさらに大きく */
-  .hiragana-quiz .quiz-button {
-    height: 80px !important; /* `!important` はセミコロンの前に置く */
-  }  
 }

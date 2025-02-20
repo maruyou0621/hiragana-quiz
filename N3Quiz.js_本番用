@@ -52,10 +52,10 @@ export default function N3Quiz() {
           </button>
         ))}
       </div>
+      <p className="quiz-feedback">{feedback}</p>
+      
       {/* 🔥 不正解時にA8.net広告を表示 */}
       {showAd && <AdBannerIncorrect />}
-      {/* 🔥 フィードバックをバナーの下に表示 */}
-      <p className="quiz-feedback">{feedback}</p>
     </div>
   );
 }
