@@ -1,28 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import n3Words from "../data/n3_words";
 import n3Grammar from "../data/n3_grammar"; // 文法問題のデータ
 import n3Sentences from "../data/n3_sentences"; // 文章問題のデータ
-
-// 単語問題をランダムに取得
-const getRandomWordQuestion = () => {
-  const word = n3Words[Math.floor(Math.random() * n3Words.length)];
-  const correctAnswer = word.kanji;
-
-  let options = new Set([correctAnswer]);
-  while (options.size < 4) {
-    const randomWord = n3Words[Math.floor(Math.random() * n3Words.length)];
-    options.add(randomWord.kanji);
-  }
-
-  return {
-    type: "単語",
-    questionText: "この画像は何？",
-    correctAnswer,
-    options: Array.from(options).sort(() => Math.random() - 0.5),
-    image: word.image,
-  };
-};
 
 // 文法問題をランダムに取得
 const getRandomGrammarQuestion = () => {
@@ -50,16 +29,9 @@ const getRandomSentenceQuestion = () => {
   };
 };
 
-// クイズのタイプをランダムで選択
+// クイズのタイプをランダムで選択（単語問題を削除）
 const getRandomQuestion = () => {
-  const randomValue = Math.random();
-  if (randomValue < 0.33) {
-    return getRandomWordQuestion();
-  } else if (randomValue < 0.66) {
-    return getRandomGrammarQuestion();
-  } else {
-    return getRandomSentenceQuestion();
-  }
+  return Math.random() < 0.5 ? getRandomGrammarQuestion() : getRandomSentenceQuestion();
 };
 
 export default function N3Quiz() {
@@ -82,24 +54,6 @@ export default function N3Quiz() {
   return (
     <div className="quiz-container">
       <h1 className="quiz-title">N3 総合クイズ</h1>
-
-      {question.image && (
-        <img
-          src={question.image}
-          alt={question.correctAnswer}
-          className="quiz-image"
-          style={{
-            width: "100%",
-            maxWidth: "200px",
-            height: "auto",
-            aspectRatio: "1 / 1",
-            objectFit: "cover",
-            borderRadius: "5px",
-            display: "block",
-            margin: "0 auto",
-          }}
-        />
-      )}
 
       <p className="quiz-question">{question.questionText}</p>
 
