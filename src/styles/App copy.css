@@ -26,7 +26,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  margin-top: 20px; /* 回答ボタンとの間に余白を追加 */
+  margin-bottom: 15px;
 }
 
 .nav-button, .quiz-switch-button {
@@ -107,14 +107,6 @@ body {
   background-color: #357ab8;
 }
 
-/* ====== 正解・不正解のフィードバック ====== */
-.quiz-feedback {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 20px; /* 余白を追加 */
-}
-
 /* ====== バナー広告エリア ====== */
 .ad-container {
   text-align: center;
@@ -142,6 +134,5 @@ body {
   .nav-buttons, .quiz-switch-buttons {
     flex-wrap: nowrap;
     justify-content: center;
-    margin-top: 30px; /* スマホでも余白をしっかり確保 */
   }
 }

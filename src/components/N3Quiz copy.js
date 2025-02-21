@@ -91,14 +91,13 @@ export default function N3Quiz() {
         ))}
       </div>
 
+      <p className="quiz-feedback">{feedback}</p>
+      
       {/* クイズ切り替えボタン */}
       <div className="quiz-switch-buttons">
         <button className="quiz-switch-button" onClick={() => navigate("/quiz/hiragana")}>ひらがなクイズへ</button>
         <button className="quiz-switch-button" onClick={() => navigate("/")}>トップページへ</button>
       </div>
-
-      {/* 修正: 正解・不正解をボタンの下に移動 */}
-      <p className="quiz-feedback">{feedback}</p>
     </div>
   );
 }
