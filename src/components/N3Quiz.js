@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import n3Words from "../data/n3_words";
 import n3Grammar from "../data/n3_grammar"; // 文法問題のデータ
-import AdBannerIncorrect from "./AdBannerIncorrect"; // 不正解時の広告
 
 // 単語問題をランダムに取得
 const getRandomWordQuestion = () => {
@@ -45,20 +44,16 @@ const getRandomQuestion = () => {
 export default function N3Quiz() {
   const [question, setQuestion] = useState(getRandomQuestion());
   const [feedback, setFeedback] = useState("");
-  const [showAd, setShowAd] = useState(false);
 
   const handleAnswer = (answer) => {
     if (answer === question.correctAnswer) {
       setFeedback("✅ 正解！");
-      setShowAd(false);
       setTimeout(() => {
         setFeedback("");
         setQuestion(getRandomQuestion());
       }, 1000);
     } else {
       setFeedback("❌ 不正解…");
-      setShowAd(true);
-      window.open("https://px.a8.net/svt/ejp?a8mat=44Z2FF+E22GZ6+348+6C1VL", "広告サイト", "width=600,height=400");
     }
   };
 
@@ -85,7 +80,6 @@ export default function N3Quiz() {
         ))}
       </div>
 
-      {showAd && <AdBannerIncorrect />}
       <p className="quiz-feedback">{feedback}</p>
     </div>
   );
