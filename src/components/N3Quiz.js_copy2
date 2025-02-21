@@ -3,15 +3,40 @@ import n3Words from "../data/n3_words";
 import n3Grammar from "../data/n3_grammar"; // 文法問題のデータ
 import AdBannerIncorrect from "./AdBannerIncorrect"; // 不正解時の広告
 
+// ローマ字をひらがなに変換する関数
+const romajiToHiragana = (romaji) => {
+  const romajiToHiraganaMap = {
+    "a": "あ", "i": "い", "u": "う", "e": "え", "o": "お",
+    "ka": "か", "ki": "き", "ku": "く", "ke": "け", "ko": "こ",
+    "sa": "さ", "shi": "し", "su": "す", "se": "せ", "so": "そ",
+    "ta": "た", "chi": "ち", "tsu": "つ", "te": "て", "to": "と",
+    "na": "な", "ni": "に", "nu": "ぬ", "ne": "ね", "no": "の",
+    "ha": "は", "hi": "ひ", "fu": "ふ", "he": "へ", "ho": "ほ",
+    "ma": "ま", "mi": "み", "mu": "む", "me": "め", "mo": "も",
+    "ya": "や", "yu": "ゆ", "yo": "よ",
+    "ra": "ら", "ri": "り", "ru": "る", "re": "れ", "ro": "ろ",
+    "wa": "わ", "wo": "を", "n": "ん"
+  };
+
+  return romaji.split(/(?=[A-Z])/).map((syllable) => romajiToHiraganaMap[syllable.toLowerCase()] || syllable).join('');
+};
+
+// 音声を再生する関数
+const speakText = (text) => {
+  const msg = new SpeechSynthesisUtterance(text);
+  msg.lang = "ja-JP";  // 日本語の音声で発音
+  window.speechSynthesis.speak(msg);  // テキストを音声に変換
+};
+
 // 単語問題をランダムに取得
 const getRandomWordQuestion = () => {
   const word = n3Words[Math.floor(Math.random() * n3Words.length)];
-  const correctAnswer = word.kanji;
+  const correctAnswer = word.kanji;  // 正解を漢字に変更
 
   let options = new Set([correctAnswer]);
   while (options.size < 4) {
     const randomWord = n3Words[Math.floor(Math.random() * n3Words.length)];
-    options.add(randomWord.kanji);
+    options.add(randomWord.kanji);  // 選択肢も漢字に
   }
 
   return {
@@ -19,7 +44,7 @@ const getRandomWordQuestion = () => {
     questionText: "この画像は何？",
     correctAnswer,
     options: Array.from(options).sort(() => Math.random() - 0.5),
-    image: word.image,
+    image: word.image
   };
 };
 
@@ -32,13 +57,13 @@ const getRandomGrammarQuestion = () => {
     questionText: question.question,
     correctAnswer: question.correct,
     options: question.options,
-    image: null,
+    image: null
   };
 };
 
 // クイズのタイプをランダムで選択
 const getRandomQuestion = () => {
-  const isWordQuestion = Math.random() < 0.5;
+  const isWordQuestion = Math.random() < 0.5;  // 50% の確率で単語問題、50% で文法問題
   return isWordQuestion ? getRandomWordQuestion() : getRandomGrammarQuestion();
 };
 
@@ -48,6 +73,9 @@ export default function N3Quiz() {
   const [showAd, setShowAd] = useState(false);
 
   const handleAnswer = (answer) => {
+    const hiraganaAnswer = romajiToHiragana(answer); // ローマ字をひらがなに変換して音声で読み上げ
+    speakText(hiraganaAnswer);  // クリックした選択肢を音声で読み上げ
+
     if (answer === question.correctAnswer) {
       setFeedback("✅ 正解！");
       setShowAd(false);
