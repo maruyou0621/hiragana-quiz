@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import n3Words from "../data/n3_words";
-import n3Grammar from "../data/n3_grammar"; // 文法問題のデータ
-import n3Sentences from "../data/n3_sentences"; // 文章問題のデータ
+import n3Words from "../data/n3_words"; // 画像問題のデータ
 
-// 単語問題をランダムに取得
-const getRandomWordQuestion = () => {
+// 画像問題をランダムに取得
+const getRandomImageQuestion = () => {
   const word = n3Words[Math.floor(Math.random() * n3Words.length)];
   const correctAnswer = word.kanji;
 
@@ -16,7 +14,6 @@ const getRandomWordQuestion = () => {
   }
 
   return {
-    type: "単語",
     questionText: "この画像は何？",
     correctAnswer,
     options: Array.from(options).sort(() => Math.random() - 0.5),
@@ -24,46 +21,8 @@ const getRandomWordQuestion = () => {
   };
 };
 
-// 文法問題をランダムに取得
-const getRandomGrammarQuestion = () => {
-  const question = n3Grammar[Math.floor(Math.random() * n3Grammar.length)];
-
-  return {
-    type: "文法",
-    questionText: question.question,
-    correctAnswer: question.correct,
-    options: question.options,
-    image: null,
-  };
-};
-
-// 文章問題をランダムに取得
-const getRandomSentenceQuestion = () => {
-  const question = n3Sentences[Math.floor(Math.random() * n3Sentences.length)];
-
-  return {
-    type: "文章",
-    questionText: question.question,
-    correctAnswer: question.correct,
-    options: question.options,
-    image: null,
-  };
-};
-
-// クイズのタイプをランダムで選択
-const getRandomQuestion = () => {
-  const randomValue = Math.random();
-  if (randomValue < 0.33) {
-    return getRandomWordQuestion();
-  } else if (randomValue < 0.66) {
-    return getRandomGrammarQuestion();
-  } else {
-    return getRandomSentenceQuestion();
-  }
-};
-
-export default function N3Quiz() {
-  const [question, setQuestion] = useState(getRandomQuestion());
+export default function ImageQuiz() {
+  const [question, setQuestion] = useState(getRandomImageQuestion());
   const [feedback, setFeedback] = useState("");
   const navigate = useNavigate();
 
@@ -72,7 +31,7 @@ export default function N3Quiz() {
       setFeedback("✅ 正解！");
       setTimeout(() => {
         setFeedback("");
-        setQuestion(getRandomQuestion());
+        setQuestion(getRandomImageQuestion());
       }, 1000);
     } else {
       setFeedback("❌ 不正解…");
@@ -81,7 +40,7 @@ export default function N3Quiz() {
 
   return (
     <div className="quiz-container">
-      <h1 className="quiz-title">N3 総合クイズ</h1>
+      <h1 className="quiz-title">画像クイズ</h1>
 
       {question.image && (
         <img
@@ -113,11 +72,11 @@ export default function N3Quiz() {
 
       {/* クイズ切り替えボタン */}
       <div className="quiz-switch-buttons">
-        <button className="quiz-switch-button" onClick={() => navigate("/quiz/hiragana")}>ひらがなクイズへ</button>
+        <button className="quiz-switch-button" onClick={() => navigate("/quiz/n3")}>N3クイズへ</button>
         <button className="quiz-switch-button" onClick={() => navigate("/")}>トップページへ</button>
       </div>
 
-      {/* 修正: 正解・不正解をボタンの下に移動 */}
+      {/* 正解・不正解のフィードバック */}
       <p className="quiz-feedback">{feedback}</p>
     </div>
   );

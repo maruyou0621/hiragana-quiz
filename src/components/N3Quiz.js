@@ -1,27 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import n3Words from "../data/n3_words";
 import n3Grammar from "../data/n3_grammar"; // 文法問題のデータ
-
-// 単語問題をランダムに取得
-const getRandomWordQuestion = () => {
-  const word = n3Words[Math.floor(Math.random() * n3Words.length)];
-  const correctAnswer = word.kanji;
-
-  let options = new Set([correctAnswer]);
-  while (options.size < 4) {
-    const randomWord = n3Words[Math.floor(Math.random() * n3Words.length)];
-    options.add(randomWord.kanji);
-  }
-
-  return {
-    type: "単語",
-    questionText: "この画像は何？",
-    correctAnswer,
-    options: Array.from(options).sort(() => Math.random() - 0.5),
-    image: word.image,
-  };
-};
+import n3Sentences from "../data/n3_sentences"; // 文章問題のデータ
 
 // 文法問題をランダムに取得
 const getRandomGrammarQuestion = () => {
@@ -36,10 +16,22 @@ const getRandomGrammarQuestion = () => {
   };
 };
 
-// クイズのタイプをランダムで選択
+// 文章問題をランダムに取得
+const getRandomSentenceQuestion = () => {
+  const question = n3Sentences[Math.floor(Math.random() * n3Sentences.length)];
+
+  return {
+    type: "文章",
+    questionText: question.question,
+    correctAnswer: question.correct,
+    options: question.options,
+    image: null,
+  };
+};
+
+// クイズのタイプをランダムで選択（単語問題を削除）
 const getRandomQuestion = () => {
-  const isWordQuestion = Math.random() < 0.5;
-  return isWordQuestion ? getRandomWordQuestion() : getRandomGrammarQuestion();
+  return Math.random() < 0.5 ? getRandomGrammarQuestion() : getRandomSentenceQuestion();
 };
 
 export default function N3Quiz() {
@@ -62,24 +54,6 @@ export default function N3Quiz() {
   return (
     <div className="quiz-container">
       <h1 className="quiz-title">N3 総合クイズ</h1>
-
-      {question.image && (
-        <img
-          src={question.image}
-          alt={question.correctAnswer}
-          className="quiz-image"
-          style={{
-            width: "100%",
-            maxWidth: "200px",
-            height: "auto",
-            aspectRatio: "1 / 1",
-            objectFit: "cover",
-            borderRadius: "5px",
-            display: "block",
-            margin: "0 auto",
-          }}
-        />
-      )}
 
       <p className="quiz-question">{question.questionText}</p>
 
